@@ -10,7 +10,9 @@ class Post(Model):
     __tablename__ = 'wp_posts'
 
     id = Column(Integer, primary_key=True, name='ID')
+    type = Column(VARCHAR, name='post_type')
     name = Column(VARCHAR, name='post_name')
+    guid = Column(VARCHAR, name='guid')
     title = Column(VARCHAR, name='post_title')
     status = Column(VARCHAR, name='post_status')
     content = Column(Text, name='post_content')

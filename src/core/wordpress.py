@@ -13,11 +13,13 @@ def get_post(*query):
 
     return session \
         .query(query) \
-        .filter(Post.status=='publish') \
+        .filter(
+            Post.status=='publish',
+            Post.type=='post'
+        ) \
         .order_by(Post.date.desc())
 
 def get_post_content(content:str):
-    #
     return re.sub(
         pattern='\<\!\-{2}\ \/?wp\:(\w*)\ \-{2}\>',
         repl='',
