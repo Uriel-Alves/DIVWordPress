@@ -9,9 +9,9 @@ from asc.core.database.model import Model
 class Post(Model):
     __tablename__ = 'wp_posts'
 
-    ID = Column(Integer, primary_key=True)
-    post_name = Column(VARCHAR)
-    post_title = Column(VARCHAR)
-    post_status = Column(VARCHAR)
-    post_content = Column(Text)
-    post_date_gmt = Column(DATETIME)
+    id = Column(Integer, primary_key=True, name='ID')
+    name = Column(VARCHAR, name='post_name')
+    title = Column(VARCHAR, name='post_title')
+    status = Column(VARCHAR, name='post_status')
+    content = Column(Text, name='post_content')
+    date = Column(DATETIME, name='post_date_gmt')

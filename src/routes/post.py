@@ -1,29 +1,24 @@
 from flask import jsonify
+from flask import request
 
+from core.wordpress import get_post, get_post_content_wp_tags
 from src.routes import app, session
 from src.message import NOT_FOUND_POST
 from src.models.wordpress import Post
-
-
-query_post = (
-    Post.ID.label('id'),
-    Post.post_name.label('slug'),
-    Post.post_title.label('title'),
-    Post.post_date_gmt.label('date'),
-    Post.post_content.label('content'),
-)
-
-def get_post(*query):
-    return session \
-        .query(*query_post, *query) \
-        .filter(Post.post_status=='publish') \
-        .order_by(Post.post_date_gmt.desc())
 
 @app.route('/posts', methods=['GET'])
 def GET_post_last():
     content = []
 
-    posts = get_post().limit(10).all()
+    posts = get_post()
+    query_search = request.args.get('search')
+
+    if query_search:
+        posts = posts.filter(
+            Post.post_title.ilike(f'%{query_search.strip()}%')
+        )
+
+    posts = posts.limit(10).all()
 
     if not posts:
         return {
