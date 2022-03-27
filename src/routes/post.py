@@ -1,7 +1,7 @@
 from flask import jsonify
 from flask import request
 
-from core.wordpress import get_post, get_post_content_wp_tags
+from core.wordpress import get_post
 from src.routes import app, session
 from src.message import NOT_FOUND_POST
 from src.models.wordpress import Post
