@@ -9,10 +9,10 @@ def get_post(*query):
     session = session_factory()
 
     if not query:
-        query = Post
+        query = (Post, )
 
     return session \
-        .query(query) \
+        .query(*query) \
         .filter(
             Post.status=='publish',
             Post.type=='post'
