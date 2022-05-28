@@ -1,4 +1,4 @@
-from asc.core import session_factory
+from core import session_factory
 
 from core.wordpress import get_post, get_post_content
 from models.wordpress import Post

@@ -5,7 +5,8 @@ from sqlalchemy import VARCHAR
 from sqlalchemy import DATETIME
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
-from asc.core.database.model import Model
+
+from models import Model
 
 
 class Post(Model):

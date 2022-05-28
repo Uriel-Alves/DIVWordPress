@@ -1,6 +1,6 @@
 import re
 
-from asc.core import session_factory
+from core import session_factory
 
 from models.wordpress import Post
 

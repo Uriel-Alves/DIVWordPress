@@ -2,7 +2,7 @@ from flask import jsonify
 from flask import request
 
 from core.wordpress import get_post, Post
-from routes import app, session
+from routes import app
 from message import NOT_FOUND_POST
 from models.wordpress import PostMeta
 
