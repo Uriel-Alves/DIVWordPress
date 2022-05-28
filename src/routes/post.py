@@ -11,6 +11,7 @@ def GET_post_last():
     content = []
 
     posts = get_post()
+    query_limit = request.args.get('limit', 10)
     query_search = request.args.get('search')
 
     if query_search:
@@ -18,7 +19,7 @@ def GET_post_last():
             Post.title.ilike(f'%{query_search.strip()}%')
         )
 
-    posts = posts.limit(10).all()
+    posts = posts.limit(query_limit).all()
 
     if not posts:
         return {
