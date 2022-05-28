@@ -1,0 +1,13 @@
+[Unit]
+Description=Api Web APP_BASE_NAME
+After=network.target
+
+[Service]
+Group=www-data
+WorkingDirectory=APP_BASE_PATH/src
+ExecStart=APP_BASE_PATH/venv/bin/gunicorn --bind WSGI_HOST:WSGI_PORT --thread 16 wsgi:app
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
